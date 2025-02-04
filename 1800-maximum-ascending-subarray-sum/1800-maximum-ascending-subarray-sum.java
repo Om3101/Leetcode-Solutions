@@ -2,10 +2,9 @@ class Solution
 {
     public int maxAscendingSum(int[] nums)
     {
-        int n = nums.length;
-        int temp = nums[0], max = nums[0];
+        int temp = nums[0], sum = nums[0];
 
-        for(int i=1; i<n; i++)
+        for(int i=1; i<nums.length; i++)
         {
             if(nums[i] > nums[i-1]) {
                 temp = temp + nums[i];
@@ -13,8 +12,8 @@ class Solution
             else {
                 temp = nums[i];
             }
-            max = Math.max(temp,max);
+            sum = Math.max(temp,sum);
         }
-        return max;
+        return sum;
     }
 }
