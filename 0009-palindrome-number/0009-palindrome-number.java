@@ -11,9 +11,6 @@ class Solution {
 
             ans = (ans*10 ) + temp;
         }
-       if(ans == n){
-        return true;
-       }
-       return false;
+       return ans == n;
     }
 }
