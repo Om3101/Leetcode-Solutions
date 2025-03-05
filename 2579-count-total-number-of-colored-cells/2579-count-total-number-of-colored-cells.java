@@ -1,4 +1,10 @@
-// reln between total no of colored cells and time elapsed in min
+/* intuition : n = 1 -> 1;
+               n = 2 -> 5;
+               n = 3 -> 13;
+               n = 4 -> 25;
+
+            so as we can see the differnce between two consecutive ans are multiple of 4 */
+
 class Solution
 {
     public long coloredCells(int n)
