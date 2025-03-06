@@ -8,6 +8,7 @@ class Solution
 
         HashMap<Integer,Integer> hm = new HashMap<>();
 
+        // filing elements in Hashmap
         for(int i=0; i<n; i++)
         {
             for(int j=0; j<n; j++)
@@ -20,6 +21,7 @@ class Solution
         int missing = 0;
         int repeat = 0;
 
+        //checking missing and repeated values in hashmap
         for(int i=1; i<=n*n; i++)
         {
             if(!hm.containsKey(i))
