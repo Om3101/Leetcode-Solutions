@@ -2,18 +2,45 @@ class Solution
 {
     public int maximumCount(int[] nums)
     {
-        int pos = 0;
-        int neg = 0;
+        int n = nums.length;
+        int left = 0, right = n-1;
 
-        for(int num : nums) {
-            if(num>0)
-            {
-                pos++;
+        while(left<=right)
+        {
+            int mid = left + (right-left)/2;
+
+            if(nums[mid]>0) {
+                right = mid - 1;
             }
-            else if(num<0) {
-                neg++;
+            else {
+                left = mid + 1;
             }
         }
-        return Math.max(pos,neg);
+        
+         // Now, 'left' is the index of the first positive number
+         int pos = n - left;
+
+
+         // finding last negative
+         left = 0; right = n-1;
+         
+         while(left<=right)
+         {
+            int mid = left + (right-left) /2 ;
+
+            if(nums[mid]<0) {
+                left = mid+1;
+            }
+            else {
+                right = mid - 1;
+            }
+         }
+        
+        // Now, 'right' is the index of the last negative number
+         int neg = right+1;
+
+
+         return Math.max(pos,neg);
+        
     }
 }
