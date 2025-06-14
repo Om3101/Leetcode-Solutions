@@ -1,34 +1,31 @@
-// using 2 pointers
-
 class Solution
 {
     public int trap(int[] height)
     {
-        int lmax = 0, rmax = 0;
-        int l = 0, r = height.length - 1;
-        int total = 0;
+        int n = height.length;
+        int left[] = new int[n];
+        int right[] = new int[n];
 
-        while (l <= r)
-        { 
-            if (height[l] <= height[r]) { 
-                if (height[l] >= lmax)
-                {
-                    lmax = height[l]; // Update left max if current height is greater
-                } 
-                else {
-                    total += lmax - height[l]; // Trapping water at the left side
-                }
-                l++; 
-            } 
-            else {
-                if (height[r] >= rmax) {
-                    rmax = height[r]; // Update right max if current height is greater
-                } else {
-                    total += rmax - height[r]; // Trapping water at the right side
-                }
-                r--; 
-            }
+        //for left array
+        left[0] = height[0];
+        for(int i=1; i<n; i++)
+        {
+            left[i] = Math.max(left[i-1], height[i]);
         }
-        return total;
+
+        //for right array
+        right[n-1] = height[n-1];
+        for(int i=n-2; i>=0; i--) 
+        {
+            right[i] = Math.max(right[i+1], height[i]);
+        }
+
+        int ans = 0;
+        for(int i=0; i<n; i++)
+        {
+            ans = ans + ( Math.min(left[i],right[i]) - height[i] );
+        }
+
+        return ans;
     }
 }
